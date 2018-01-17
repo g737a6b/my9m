@@ -1,3 +1,4 @@
 /vendor
 /node_modules
 /.sass-cache
+/include/google_analytics.txt
