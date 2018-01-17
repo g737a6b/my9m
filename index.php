@@ -18,11 +18,11 @@ $Template->set("payload", [
 	"showWelcomeScreen" => $showWelcomeScreen
 ]);
 $Template->set("description", "My9(マイキュー)はキュー型のタスク管理ツールです。");
-$Template->set("canonical", HOME_URL);
+$Template->set("canonical", HOME_URL."/");
 $Template->set("ogp", [
 	"title" => "My9",
 	"description" => "My9(マイキュー)はキュー型のタスク管理ツールです。",
-	"url" => HOME_URL,
+	"url" => HOME_URL."/",
 	"image" => HOME_URL."/img/ogp_default.png"
 ]);
 $Template->display("default.php");
