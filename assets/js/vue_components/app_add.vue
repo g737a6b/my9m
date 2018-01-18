@@ -2,8 +2,10 @@
 <div class="app">
 	<div class="logo font-01"><router-link to="./"><i class="fa fa-angle-left color-lighter-gray fz30"></i> My9</router-link></div>
 	<p v-if="statusSuccess" class="status-label status-label--success mb10"><i class="fa fa-check"></i> {{statusSuccess}} <a href="#" @click.prevent="resetStatus" class="status-label__close"><i class="fa fa-close"></i></a></p>
-	<input v-model="newTask" @keyup="resetStatus" placeholder="タスクを入力してください" class="input-01" />
-	<button type="button" @click="addNewTask" class="button-01 mt10" :class="{'is-disabled': !newTask.length}"><i class="fa fa-plus"></i> 追加する</button>
+	<form action="#" @submit.prevent="addNewTask">
+		<input v-model="newTask" @keyup="resetStatusOnKeyUp" placeholder="タスクを入力してください" class="input-01" />
+		<button type="button" @click="addNewTask" class="button-01 mt10" :class="{'is-disabled': !newTask.length}"><i class="fa fa-plus"></i> 追加する</button>
+	</form>
 </div>
 </template>
 
@@ -31,6 +33,10 @@ export default {
 			this.newTask = "";
 			this.statusSuccess = "タスクを追加しました!";
 			this.$emit("update-storage", this.items);
+		},
+		resetStatusOnKeyUp: function(){
+			if( this.newTask.length < 1 ) return;
+			this.resetStatus();
 		},
 		resetStatus: function(){
 			this.statusSuccess = "";
