@@ -29,3 +29,13 @@ function setDefaults($Template){
 	$Template->set("title", "My9");
 	$Template->set("payload", []);
 }
+
+/**
+ * @param string $filePath
+ * @return string
+ */
+function appendTimestamp($filePath){
+	$fullPath = DOC_ROOT.DIRECTORY_SEPARATOR.ltrim($filePath, DIRECTORY_SEPARATOR);
+	$timestamp = ( file_exists($fullPath) && $timeModified = filemtime($fullPath) ) ? $timeModified : strtotime(date("Y-m-d"));
+	return "{$filePath}?{$timestamp}";
+}
