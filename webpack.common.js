@@ -2,8 +2,8 @@ const webpack = require("webpack");
 
 module.exports = {
 	entry: {
-		"default": ["babel-polyfill", "./assets/js/default.js"],
-		"app": ["babel-polyfill", "./assets/js/app.js"]
+		"default": "src/default.js",
+		"app": ["babel-polyfill", "src/app.js"]
 	},
 	output: {
 		filename: "[name].js",
