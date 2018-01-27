@@ -1,5 +1,5 @@
 {
-  "require": {
-    "g737a6b/php-r2-template": "1.*"
-  }
+	"require": {
+		"g737a6b/php-r2-template": "1.*"
+	}
 }
