@@ -238,13 +238,21 @@
 	background: #fff none;
 	position: relative;
 	box-shadow: 0 1px 8px rgba(0,0,0,0.2);
-	padding: 10px 56px 10px 20px;
+	padding: 10px 90px 10px 20px;
 
-	&__close{
+	&__rename,
+	&__remove{
 		position: absolute;
 		top: 10px;
-		right: 20px;
 		display: block;
+	}
+
+	&__rename{
+		right: 50px;
+	}
+
+	&__remove{
+		right: 20px;
 	}
 }
 
