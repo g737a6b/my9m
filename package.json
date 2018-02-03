@@ -18,6 +18,8 @@
 		"webpack-merge": "^4.1.1"
 	},
 	"scripts": {
-		"build": "webpack --config webpack.prod.js && node-sass ./assets/css --output ./css --output-style compressed"
+		"build": "webpack --config webpack.prod.js && node-sass ./assets/css --output ./css --output-style compressed",
+		"watch-js": "webpack --config webpack.dev.js --watch",
+		"watch-css": "node-sass ./assets/css --output ./css --output-style compressed --watch"
 	}
 }
