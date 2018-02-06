@@ -14,6 +14,37 @@ if( window.localStorage ){
 	if( storageData ) tasks = JSON.parse(storageData);
 }
 
+/**
+ * @type {object}
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode
+ */
+const keyCodes = {
+	a: 65,
+	g: 71,
+	h: 72,
+	l: 76
+};
+
+/**
+ * ショートカットキーを登録します
+ *
+ * @param {object} router
+ */
+function registerShortcutKeys(router){
+	let previousKey = -1;
+	window.addEventListener("keydown", function(e){
+		if( document.querySelector("input:focus, textarea:focus") ) return;
+		if( previousKey === keyCodes.g ){
+			switch(e.keyCode){
+				case keyCodes.a: router.push({path: window.payload.homeUrl + "/add"}); break;
+				case keyCodes.h: router.push({path: window.payload.homeUrl + "/"}); break;
+				case keyCodes.l: router.push({path: window.payload.homeUrl + "/list"}); break;
+			}
+		}
+		previousKey = e.keyCode;
+	});
+}
+
 const eventHandler = function(){
 	const router = new VueRouter({
 		mode: "history",
@@ -34,6 +65,7 @@ const eventHandler = function(){
 			}
 		}
 	});
+	registerShortcutKeys(router);
 };
 
 if( document.readyState !== "loading" ){
