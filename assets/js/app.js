@@ -35,11 +35,14 @@ function registerShortcutKeys(router){
 	window.addEventListener("keydown", function(e){
 		if( document.querySelector("input:focus, textarea:focus") ) return;
 		if( previousKey === keyCodes.g ){
+			let shouldPrevent = true;
 			switch(e.keyCode){
 				case keyCodes.a: router.push({path: window.payload.homeUrl + "/add"}); break;
 				case keyCodes.h: router.push({path: window.payload.homeUrl + "/"}); break;
 				case keyCodes.l: router.push({path: window.payload.homeUrl + "/list"}); break;
+				default: shouldPrevent = false;
 			}
+			if( shouldPrevent ) e.preventDefault();
 		}
 		previousKey = e.keyCode;
 	});
