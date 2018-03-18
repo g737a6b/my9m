@@ -14,7 +14,7 @@ if( empty($_SESSION["welcomeScreenShown"]) ){
 $Template->set("js", "app.js");
 $Template->set("include", "_pages/app.php");
 $Template->set("payload", [
-	"homeUrl" => "/my9m",
+	"homeUrl" => strval(parse_url(HOME_URL, PHP_URL_PATH)),
 	"showWelcomeScreen" => $showWelcomeScreen
 ]);
 $Template->set("description", "My9(マイキュー)はキュー型のタスク管理ツールです。");
