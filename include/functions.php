@@ -10,16 +10,6 @@ function h($str){
 }
 
 /**
- * @param mixed $str
- * @return mixed
- */
-function sanitize($str){
-	if( is_array($str) ) return array_map("sanitize", $str);
-	if( !is_string($str) ) return $str;
-	return str_replace("\0", "", $str);
-}
-
-/**
  * @param object $Template R2Template
  */
 function setDefaults($Template){
