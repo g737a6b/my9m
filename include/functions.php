@@ -16,7 +16,7 @@ function setDefaults($Template){
 	$Template->set("homeUrl", HOME_URL);
 	$Template->set("css", "default.css");
 	$Template->set("js", "default.js");
-	$Template->set("title", "My9");
+	$Template->set("title", SITE_NAME);
 	$Template->set("payload", []);
 }
 
