@@ -9,9 +9,9 @@ $Template->set("title", "ヘルプ - My9");
 $Template->set("description", "よくある質問についてまとめています。My9(マイキュー)はキュー型のタスク管理ツールです。");
 $Template->set("canonical", HOME_URL."/help/");
 $Template->set("ogp", [
-	"title" => "ヘルプ - My9",
-	"description" => "よくある質問についてまとめています。My9(マイキュー)はキュー型のタスク管理ツールです。",
-	"url" => HOME_URL."/help/",
-	"image" => HOME_URL."/img/ogp_default.png"
+	"og:title" => "ヘルプ - My9",
+	"og:description" => "よくある質問についてまとめています。My9(マイキュー)はキュー型のタスク管理ツールです。",
+	"og:url" => HOME_URL."/help/",
+	"og:image" => HOME_URL."/img/ogp_default.png"
 ]);
 $Template->display("default.php");

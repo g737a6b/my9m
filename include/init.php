@@ -2,6 +2,7 @@
 define("DOC_ROOT", dirname(__DIR__, 1));
 define("IS_DEV_MODE", false);
 define("HOME_URL", "https://mofg.net/my9m");
+define("SITE_NAME", "My9");
 define("TEMPLATE_DIR", DOC_ROOT."/templates");
 
 mb_internal_encoding("UTF-8");

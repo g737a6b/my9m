@@ -1,9 +1,9 @@
 @charset "utf-8";
 
-@import "vars";
-@import "init";
-@import "components";
-@import "utilities";
+@import "_vars";
+@import "_init";
+@import "_components";
+@import "_utilities";
 
 html, body{
 	background: $color-dark-purple none;
