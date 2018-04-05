@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/php:7.1-node-browsers
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: composer install -n --prefer-dist
+      - run: npm install
+      - run: npm run build
