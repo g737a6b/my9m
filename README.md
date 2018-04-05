@@ -1,12 +1,8 @@
-# 開発
-
-## 開発環境構築
+# my9m [![CircleCI](https://circleci.com/gh/g737a6b/my9m.svg?style=svg)](https://circleci.com/gh/g737a6b/my9m)
 
 ```
 $ docker-compose up -d
 ```
-
-## ビルド
 
 ```
 $ docker run -it --rm -v $(pwd):/app composer:1.6 install
