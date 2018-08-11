@@ -228,6 +228,8 @@
 
 .task-list{
 	line-height: 1.6;
+	border-right: 10px dotted $color-light-gray;
+	padding-right: 20px;
 
 	&__item + &__item{
 		margin-top: 10px;
