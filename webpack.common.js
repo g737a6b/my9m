@@ -3,7 +3,7 @@ const webpack = require("webpack");
 module.exports = {
 	entry: {
 		"default": "src/default.js",
-		"app": ["babel-polyfill", "src/app.js"]
+		"app": "src/app.js"
 	},
 	output: {
 		filename: "[name].js",
@@ -37,7 +37,7 @@ module.exports = {
 			}
 		]
 	},
-	plugins: [
-		new webpack.optimize.UglifyJsPlugin()
-	]
+	optimization: {
+		minimize: true
+	}
 };

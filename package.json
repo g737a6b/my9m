@@ -10,16 +10,17 @@
 		"eslint-loader": "^2.1.0",
 		"node-sass": "^4.9.3",
 		"vue": "^2.5.17",
-		"vue-loader": "^15.3.0",
+		"vue-loader": "^14.2.2",
 		"vue-router": "^3.0.1",
 		"vue-template-compiler": "^2.5.17",
 		"vuedraggable": "^2.16.0",
 		"webpack": "^4.16.5",
+		"webpack-command": "^0.4.1",
 		"webpack-merge": "^4.1.4"
 	},
 	"scripts": {
-		"build": "webpack --config webpack.prod.js && node-sass ./assets/scss --output ./css --output-style compressed",
-		"watch-js": "webpack --config webpack.dev.js --watch",
+		"build": "webpack --mode production --config webpack.prod.js && node-sass ./assets/scss --output ./css --output-style compressed",
+		"watch-js": "webpack --mode development --config webpack.dev.js --watch",
 		"watch-css": "node-sass ./assets/scss --output ./css --output-style compressed --watch"
 	}
 }
