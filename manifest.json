@@ -1,0 +1,21 @@
+{
+	"short_name": "My9",
+	"name": "My9",
+	"description": "キュー型のタスク管理ツールです。",
+	"icons": [
+		{
+			"src": "./img/icon-192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "./img/icon-320.png",
+			"type": "image/png",
+			"sizes": "320x320"
+		}
+	],
+	"background_color": "#3d0c71",
+	"theme_color": "#3d0c71",
+	"start_url": "/?utm_source=homescreen",
+	"display": "standalone"
+}
