@@ -2,12 +2,13 @@ const webpack = require("webpack");
 
 module.exports = {
 	entry: {
-		"default": "src/default.js",
-		"app": "src/app.js"
+		"js/default": "src/default.js",
+		"js/app": "src/app.js",
+		"sw": "src/sw.js"
 	},
 	output: {
 		filename: "[name].js",
-		path: __dirname + "/js"
+		path: __dirname
 	},
 	resolve: {
 		alias: {
