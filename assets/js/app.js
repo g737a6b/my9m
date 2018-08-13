@@ -76,3 +76,8 @@ if( document.readyState !== "loading" ){
 }else{
 	document.addEventListener("DOMContentLoaded", eventHandler);
 }
+
+window.addEventListener("load", function(){
+	if( !("serviceWorker" in navigator) ) return;
+	navigator.serviceWorker.register(window.payload.homeUrl + "/sw.js");
+});
