@@ -57,8 +57,8 @@ const eventHandler = function(){
 			{name: "home", path: window.payload.homePath + "/", component: appMain, props: () => ({tasks})},
 			{name: "add", path: window.payload.homePath + "/add", component: appAdd, props: () => ({tasks})},
 			{name: "list", path: window.payload.homePath + "/list", component: appList, props: () => ({tasks})},
-			{name: "about", path: window.payload.homePath + "/about", component: pageAbout, props: () => ({tasks})},
-			{name: "help", path: window.payload.homePath + "/help", component: pageHelp, props: () => ({tasks})}
+			{name: "about", path: window.payload.homePath + "/about", component: pageAbout},
+			{name: "help", path: window.payload.homePath + "/help", component: pageHelp}
 		]
 	});
 	new Vue({
