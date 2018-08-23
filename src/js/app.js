@@ -5,6 +5,8 @@ import VueRouter from "vue-router";
 import appMain from "src/vue_components/app_main.vue";
 import appAdd from "src/vue_components/app_add.vue";
 import appList from "src/vue_components/app_list.vue";
+import pageAbout from "src/vue_components/about.vue";
+import pageHelp from "src/vue_components/help.vue";
 
 Vue.use(VueRouter);
 
@@ -37,9 +39,9 @@ function registerShortcutKeys(router){
 		if( previousKey === keyCodes.g ){
 			let shouldPrevent = true;
 			switch(e.keyCode){
-				case keyCodes.a: router.push({path: window.payload.homeUrl + "/add"}); break;
-				case keyCodes.h: router.push({path: window.payload.homeUrl + "/"}); break;
-				case keyCodes.l: router.push({path: window.payload.homeUrl + "/list"}); break;
+				case keyCodes.a: router.push({path: window.payload.homePath + "/add"}); break;
+				case keyCodes.h: router.push({path: window.payload.homePath + "/"}); break;
+				case keyCodes.l: router.push({path: window.payload.homePath + "/list"}); break;
 				default: shouldPrevent = false;
 			}
 			if( shouldPrevent ) e.preventDefault();
@@ -52,9 +54,11 @@ const eventHandler = function(){
 	const router = new VueRouter({
 		mode: "history",
 		routes: [
-			{name: "home", path: window.payload.homeUrl + "/", component: appMain, props: () => ({tasks})},
-			{name: "add", path: window.payload.homeUrl + "/add", component: appAdd, props: () => ({tasks})},
-			{name: "list", path: window.payload.homeUrl + "/list", component: appList, props: () => ({tasks})}
+			{name: "home", path: window.payload.homePath + "/", component: appMain, props: () => ({tasks})},
+			{name: "add", path: window.payload.homePath + "/add", component: appAdd, props: () => ({tasks})},
+			{name: "list", path: window.payload.homePath + "/list", component: appList, props: () => ({tasks})},
+			{name: "about", path: window.payload.homePath + "/about", component: pageAbout},
+			{name: "help", path: window.payload.homePath + "/help", component: pageHelp}
 		]
 	});
 	new Vue({
@@ -79,5 +83,5 @@ if( document.readyState !== "loading" ){
 
 window.addEventListener("load", function(){
 	if( !("serviceWorker" in navigator) ) return;
-	navigator.serviceWorker.register(window.payload.homeUrl + "/sw.js");
+	navigator.serviceWorker.register(window.payload.homePath + "/sw.js");
 });
