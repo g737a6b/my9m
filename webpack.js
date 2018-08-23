@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports = {
+module.exports = (env, argv) => ({
 	entry: {
 		"docs/js/app": "src/app.js",
 		"docs/sw": "src/sw.js"
@@ -12,7 +12,9 @@ module.exports = {
 	resolve: {
 		alias: {
 			"src": __dirname + "/assets/js",
-			"vuedraggable": "vuedraggable/dist/vuedraggable.js"
+			"vuedraggable": "vuedraggable/dist/vuedraggable.js",
+			"vue": ( argv.mode === "production" ) ? "vue/dist/vue.min.js" : "vue/dist/vue.js",
+			"vue-router": ( argv.mode === "production" ) ? "vue-router/dist/vue-router.min.js" : "vue-router/dist/vue-router.js"
 		}
 	},
 	module: {
@@ -51,4 +53,4 @@ module.exports = {
 	optimization: {
 		minimize: true
 	}
-};
+});
