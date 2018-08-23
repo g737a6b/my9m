@@ -1,0 +1,49 @@
+
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="description" content="My9(マイキュー)はキュー型のタスク管理ツールです。" />
+<link rel="canonical" href="" />
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+<meta property="og:title" content="My9" />
+<meta property="og:description" content="My9(マイキュー)はキュー型のタスク管理ツールです。" />
+<meta property="og:url" content="" />
+<meta property="og:image" content="/img/ogp_default.png" />
+<meta property="og:site_name" content="My9" />
+<meta name="twitter:card" content="summary_large_image" />
+<title>My9</title>
+<link rel="apple-touch-icon" href="/img/icon-320.png" />
+<link rel="icon" sizes="192x192" href="/img/icon-192.png" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Berkshire+Swash" />
+<link rel="stylesheet" href="/css/default.css?1535036093101" />
+<script>
+var payload = {homePath: ""};
+</script>
+</head>
+<body>
+<div id="wrapper">
+	<router-view @update-storage="updateStorage"></router-view>
+	<footer class="footer">
+		<ul class="footer-nav">
+			<li class="footer-nav__item">
+				<router-link to="./about" class="footer-nav-link">My9とは</router-link>
+			</li>
+			<li class="footer-nav__item">
+				<router-link to="./help" class="footer-nav-link">ヘルプ</router-link>
+			</li>
+			<li class="footer-nav__item">
+				<a href="https://mofg.net" class="footer-nav-link">運営者</a>
+			</li>
+			<li class="footer-nav__item">
+				<a href="https://github.com/g737a6b/my9m" class="footer-nav-link">貢献</a>
+			</li>
+		</ul>
+		<div class="footer-copyright">(c) 2018 My9</div>
+	</footer><!-- .footer -->
+</div><!-- #wrapper -->
+<script src="/js/app.js?1535036093101"></script>
+</body>
+</html>
