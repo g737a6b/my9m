@@ -20,8 +20,8 @@
 		"html-webpack-plugin": "^3.2.0"
 	},
 	"scripts": {
-		"build": "webpack --mode production --config webpack.js && node-sass ./assets/scss --output ./docs/css --output-style compressed",
+		"build": "webpack --mode production --config webpack.js && node-sass ./src/scss --output ./docs/css --output-style compressed",
 		"watch-js": "webpack --mode development --config webpack.js --watch",
-		"watch-css": "node-sass ./assets/scss --output ./docs/css --output-style compressed --watch"
+		"watch-css": "node-sass ./src/scss --output ./docs/css --output-style compressed --watch"
 	}
 }

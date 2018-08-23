@@ -11,7 +11,7 @@ module.exports = (env, argv) => ({
 	},
 	resolve: {
 		alias: {
-			"src": __dirname + "/assets/js",
+			"src": __dirname + "/src/js",
 			"vuedraggable": "vuedraggable/dist/vuedraggable.js",
 			"vue": ( argv.mode === "production" ) ? "vue/dist/vue.min.js" : "vue/dist/vue.js",
 			"vue-router": ( argv.mode === "production" ) ? "vue-router/dist/vue-router.min.js" : "vue-router/dist/vue-router.js"
@@ -46,7 +46,7 @@ module.exports = (env, argv) => ({
 	plugins: [
 		new HtmlWebpackPlugin({
 			filename: "./docs/index.html",
-			template: "./assets/js/templates/frame.ejs",
+			template: "./src/js/templates/frame.ejs",
 			inject: false
 		})
 	],
