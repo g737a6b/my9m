@@ -39,9 +39,9 @@ function registerShortcutKeys(router){
 		if( previousKey === keyCodes.g ){
 			let shouldPrevent = true;
 			switch(e.keyCode){
-				case keyCodes.a: router.push({path: window.payload.homeUrl + "/add"}); break;
-				case keyCodes.h: router.push({path: window.payload.homeUrl + "/"}); break;
-				case keyCodes.l: router.push({path: window.payload.homeUrl + "/list"}); break;
+				case keyCodes.a: router.push({path: window.payload.homePath + "/add"}); break;
+				case keyCodes.h: router.push({path: window.payload.homePath + "/"}); break;
+				case keyCodes.l: router.push({path: window.payload.homePath + "/list"}); break;
 				default: shouldPrevent = false;
 			}
 			if( shouldPrevent ) e.preventDefault();
@@ -54,11 +54,11 @@ const eventHandler = function(){
 	const router = new VueRouter({
 		mode: "history",
 		routes: [
-			{name: "home", path: window.payload.homeUrl + "/", component: appMain, props: () => ({tasks})},
-			{name: "add", path: window.payload.homeUrl + "/add", component: appAdd, props: () => ({tasks})},
-			{name: "list", path: window.payload.homeUrl + "/list", component: appList, props: () => ({tasks})},
-			{name: "about", path: window.payload.homeUrl + "/about", component: pageAbout, props: () => ({tasks})},
-			{name: "help", path: window.payload.homeUrl + "/help", component: pageHelp, props: () => ({tasks})}
+			{name: "home", path: window.payload.homePath + "/", component: appMain, props: () => ({tasks})},
+			{name: "add", path: window.payload.homePath + "/add", component: appAdd, props: () => ({tasks})},
+			{name: "list", path: window.payload.homePath + "/list", component: appList, props: () => ({tasks})},
+			{name: "about", path: window.payload.homePath + "/about", component: pageAbout, props: () => ({tasks})},
+			{name: "help", path: window.payload.homePath + "/help", component: pageHelp, props: () => ({tasks})}
 		]
 	});
 	new Vue({
@@ -83,5 +83,5 @@ if( document.readyState !== "loading" ){
 
 window.addEventListener("load", function(){
 	if( !("serviceWorker" in navigator) ) return;
-	navigator.serviceWorker.register(window.payload.homeUrl + "/sw.js");
+	navigator.serviceWorker.register(window.payload.homePath + "/sw.js");
 });
