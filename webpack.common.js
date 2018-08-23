@@ -1,10 +1,9 @@
-const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
 	entry: {
-		"js/default": "src/default.js",
-		"js/app": "src/app.js",
-		"sw": "src/sw.js"
+		"docs/js/app": "src/app.js",
+		"docs/sw": "src/sw.js"
 	},
 	output: {
 		filename: "[name].js",
@@ -35,9 +34,20 @@ module.exports = {
 						css: "vue-style-loader!css-loader"
 					}
 				}
+			},
+			{
+				test: /\.ejs$/,
+				use: "ejs-compiled-loader"
 			}
 		]
 	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			filename: "./docs/index.html",
+			template: "./assets/js/templates/frame.ejs",
+			inject: false
+		})
+	],
 	optimization: {
 		minimize: true
 	}

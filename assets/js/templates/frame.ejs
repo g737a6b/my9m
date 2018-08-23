@@ -1,0 +1,48 @@
+<% var homeUrl = "http://localhost"; %>
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="description" content="My9(マイキュー)はキュー型のタスク管理ツールです。" />
+<link rel="canonical" href="<%= homeUrl %>" />
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+<meta property="og:title" content="My9" />
+<meta property="og:description" content="My9(マイキュー)はキュー型のタスク管理ツールです。" />
+<meta property="og:url" content="<%= homeUrl %>/" />
+<meta property="og:image" content="<%= homeUrl %>/img/ogp_default.png" />
+<meta property="og:site_name" content="My9" />
+<meta name="twitter:card" content="summary_large_image" />
+<title>My9</title>
+<link rel="apple-touch-icon" href="<%= homeUrl %>/img/icon-320.png" />
+<link rel="icon" sizes="192x192" href="<%= homeUrl %>/img/icon-192.png" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Berkshire+Swash" />
+<link rel="stylesheet" href="<%= homeUrl %>/css/default.css?<%= Date.now() %>" />
+<script>
+var payload = {"homeUrl": "", "showWelcomeScreen": true};
+</script>
+</head>
+<body>
+<div id="wrapper">
+	<router-view @update-storage="updateStorage"></router-view>
+	<footer class="footer">
+		<ul class="footer-nav">
+			<li class="footer-nav__item">
+				<a href="./about" class="footer-nav-link">My9とは</a>
+			</li>
+			<li class="footer-nav__item">
+				<a href="./help" class="footer-nav-link">ヘルプ</a>
+			</li>
+			<li class="footer-nav__item">
+				<a href="https://mofg.net" class="footer-nav-link">運営者</a>
+			</li>
+			<li class="footer-nav__item">
+				<a href="https://github.com/g737a6b/my9m" class="footer-nav-link">貢献</a>
+			</li>
+		</ul>
+		<div class="footer-copyright">(c) 2018 My9</div>
+	</footer><!-- .footer -->
+</div><!-- #wrapper -->
+<script src="<%= homeUrl %>/js/app.js?<%= Date.now() %>"></script>
+</body>
+</html>

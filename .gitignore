@@ -1,5 +1,5 @@
-/vendor/
 /node_modules/
-/js/
-/css/
-/sw.js
+/docs/js/
+/docs/css/
+/docs/sw.js
+/docs/index.html

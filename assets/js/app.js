@@ -5,6 +5,8 @@ import VueRouter from "vue-router";
 import appMain from "src/vue_components/app_main.vue";
 import appAdd from "src/vue_components/app_add.vue";
 import appList from "src/vue_components/app_list.vue";
+import pageAbout from "src/vue_components/about.vue";
+import pageHelp from "src/vue_components/help.vue";
 
 Vue.use(VueRouter);
 
@@ -54,7 +56,9 @@ const eventHandler = function(){
 		routes: [
 			{name: "home", path: window.payload.homeUrl + "/", component: appMain, props: () => ({tasks})},
 			{name: "add", path: window.payload.homeUrl + "/add", component: appAdd, props: () => ({tasks})},
-			{name: "list", path: window.payload.homeUrl + "/list", component: appList, props: () => ({tasks})}
+			{name: "list", path: window.payload.homeUrl + "/list", component: appList, props: () => ({tasks})},
+			{name: "about", path: window.payload.homeUrl + "/about", component: pageAbout, props: () => ({tasks})},
+			{name: "help", path: window.payload.homeUrl + "/help", component: pageHelp, props: () => ({tasks})}
 		]
 	});
 	new Vue({
