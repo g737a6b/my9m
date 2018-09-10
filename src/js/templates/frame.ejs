@@ -1,4 +1,5 @@
 <% var homeUrl = "https://my9.mofg.net"; %>
+<% var timestamp = "1536582556794"; %>
 <!doctype html>
 <html lang="ja">
 <head>
@@ -18,7 +19,7 @@
 <link rel="manifest" href="<%= homeUrl %>/manifest.json" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Berkshire+Swash" />
-<link rel="stylesheet" href="<%= homeUrl %>/css/default.css?<%= Date.now() %>" />
+<link rel="stylesheet" href="<%= homeUrl %>/css/default.css?<%= timestamp %>" />
 <script>
 var payload = {homePath: ""};
 </script>
@@ -44,6 +45,6 @@ var payload = {homePath: ""};
 		<div class="footer-copyright">(c) 2018 My9</div>
 	</footer><!-- .footer -->
 </div><!-- #wrapper -->
-<script src="<%= homeUrl %>/js/app.js?<%= Date.now() %>"></script>
+<script src="<%= homeUrl %>/js/app.js?<%= timestamp %>"></script>
 </body>
 </html>
