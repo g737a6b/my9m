@@ -1,7 +1,7 @@
-version: "3.3"
+version: "3"
 services:
-  my9m:
-    container_name: my9m
+  my9m-web:
+    container_name: my9m-web
     build: "."
     ports:
       - "80:80"
