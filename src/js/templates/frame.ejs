@@ -1,5 +1,5 @@
 <%
-var homeUrl = "https://my9.mofg.net";
+var homeUrl = process.env.NODE_ENV === "production" ? "https://my9.mofg.net" : "";
 var timestamp = Date.now();
 %>
 <!doctype html>
