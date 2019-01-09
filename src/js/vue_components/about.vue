@@ -5,7 +5,7 @@
 		<div class="topicpath__item"><router-link to="./" class="tdu">トップページ</router-link></div>
 		<h1 class="topicpath__item">My9(マイキュー)とは</h1>
 	</div>
-	<h2 class="heading-01 mt30">日々のタスク管理などこの原則に従うだけで十分だ</h2>
+	<h2 class="heading-01 mt30">日々のタスク管理などこの原則に従うだけで十分だ！</h2>
 	<p class="fsi mt20">タスク発生時には登録のみ。前から順に一つずつ処理。気が向いたら優先度で並び替える。</p>
 	<h3 class="heading-02 mt40">My9はタスク管理ツールです</h3>
 	<p class="mt20">以下のようにご利用ください。</p>

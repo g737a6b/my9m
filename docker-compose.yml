@@ -2,8 +2,8 @@ version: "3"
 services:
   my9m-web:
     container_name: my9m-web
-    build: "."
+    image: "httpd:2.4"
     ports:
       - "80:80"
     volumes:
-      - "./docs:/var/www/html"
+      - "./docs:/usr/local/apache2/htdocs"
