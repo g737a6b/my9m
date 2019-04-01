@@ -52,7 +52,7 @@ function registerShortcutKeys(router){
 
 const eventHandler = function(){
 	const router = new VueRouter({
-		mode: "history",
+		mode: "hash",
 		routes: [
 			{name: "home", path: window.payload.homePath + "/", component: appMain, props: () => ({tasks})},
 			{name: "add", path: window.payload.homePath + "/add", component: appAdd, props: () => ({tasks})},
