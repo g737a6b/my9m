@@ -1,7 +1,7 @@
 const CACHE_CURRENT_VERSION = "my9m-v2";
 
-self.addEventListener("install", e => {
-	e.waitUntil(caches.open(CACHE_CURRENT_VERSION).then(cache => {
+self.addEventListener("install", (e) => {
+	e.waitUntil(caches.open(CACHE_CURRENT_VERSION).then((cache) => {
 		return cache.addAll([
 			"/",
 			"/?utm_source=homescreen",
@@ -17,10 +17,10 @@ self.addEventListener("install", e => {
 	}));
 });
 
-self.addEventListener("fetch", e => {
-	e.respondWith(caches.match(e.request).then(response => {
-		return response || fetch(e.request).then(response => {
-			return caches.open(CACHE_CURRENT_VERSION).then(cache => {
+self.addEventListener("fetch", (e) => {
+	e.respondWith(caches.match(e.request).then((response) => {
+		return response || fetch(e.request).then((response) => {
+			return caches.open(CACHE_CURRENT_VERSION).then((cache) => {
 				cache.put(e.request, response.clone());
 				return response;
 			});
@@ -28,11 +28,11 @@ self.addEventListener("fetch", e => {
 	}));
 });
 
-self.addEventListener("activate", e => {
-	e.waitUntil(caches.keys().then(cacheNames => {
-		return Promise.all(cacheNames.map(cacheName => {
+self.addEventListener("activate", (e) => {
+	e.waitUntil(caches.keys().then((cacheNames) => {
+		return Promise.all(cacheNames.map((cacheName) => {
 			if( cacheName === CACHE_CURRENT_VERSION ) return;
-			caches.delete(cacheName);
+			return caches.delete(cacheName);
 		}));
 	}));
 });
