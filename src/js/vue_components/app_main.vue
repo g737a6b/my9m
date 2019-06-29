@@ -10,6 +10,10 @@
 		<p v-if="items.length > 0" class="current-task" key="task">{{items[0].text}}</p>
 		<p v-else-if="!closedTasks" class="empty-tasks" key="empty">登録されているタスクはありません</p>
 		<p v-else class="empty-tasks" key="all-done"><i class="fa fa-heart"></i> All Done!</p>
+		<div class="theme mt20">
+			<p class="dib">ここに今週のテーマや今日の目標を追加できます。</p>
+			<a href="#" @click.prevent="" class="dib"><i class="fa fa-edit"></i> 編集</a>
+		</div>
 		<div class="app-action-buttons">
 			<a href="#" @click.prevent="closeCurrentTask" class="app-action-button" :class="{'is-disabled': items.length < 1}" title="現在のタスクを完了にする"><i class="fa fa-check"></i></a>
 		</div>
