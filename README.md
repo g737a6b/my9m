@@ -2,11 +2,11 @@
 
 ## Development
 
-```
-$ docker-compose up -d
+```sh
+docker-compose up -d
 ```
 
-```
-$ docker run -it --rm -v $(pwd):/app -w /app node:9 npm install
-$ docker run -it --rm -v $(pwd):/app -w /app node:9 npm run build-dev
+```sh
+docker run -it --rm -v $(pwd):/app -w /app node:9 npm install
+docker run -it --rm -v $(pwd):/app -w /app node:9 npm run build-dev
 ```
