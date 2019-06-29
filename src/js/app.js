@@ -11,9 +11,12 @@ import pageHelp from "src/vue_components/help.vue";
 Vue.use(VueRouter);
 
 let tasks = [];
+let theme = "";
 if( window.localStorage ){
-	const storageData = window.localStorage.getItem("tasks");
-	if( storageData ) tasks = JSON.parse(storageData);
+	const storageTasks = window.localStorage.getItem("tasks");
+	if( storageTasks ) tasks = JSON.parse(storageTasks);
+	const storageTheme = window.localStorage.getItem("theme");
+	if( storageTheme ) theme = storageTheme;
 }
 
 /**
@@ -54,11 +57,30 @@ const eventHandler = function(){
 	const router = new VueRouter({
 		mode: "hash",
 		routes: [
-			{name: "home", path: window.payload.homePath + "/", component: appMain, props: () => ({tasks})},
-			{name: "add", path: window.payload.homePath + "/add", component: appAdd, props: () => ({tasks})},
-			{name: "list", path: window.payload.homePath + "/list", component: appList, props: () => ({tasks})},
-			{name: "about", path: window.payload.homePath + "/about", component: pageAbout},
-			{name: "help", path: window.payload.homePath + "/help", component: pageHelp}
+			{
+				name: "home",
+				path: window.payload.homePath + "/",
+				component: appMain,
+				props: () => ({tasks, theme})
+			}, {
+				name: "add",
+				path: window.payload.homePath + "/add",
+				component: appAdd,
+				props: () => ({tasks, theme})
+			}, {
+				name: "list",
+				path: window.payload.homePath + "/list",
+				component: appList,
+				props: () => ({tasks, theme})
+			}, {
+				name: "about",
+				path: window.payload.homePath + "/about",
+				component: pageAbout
+			}, {
+				name: "help",
+				path: window.payload.homePath + "/help",
+				component: pageHelp
+			}
 		]
 	});
 	new Vue({
