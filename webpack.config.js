@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = (env, argv) => ({
@@ -48,6 +49,9 @@ module.exports = (env, argv) => ({
 			filename: "./docs/index.html",
 			template: "./src/js/templates/frame.ejs",
 			inject: false
+		}),
+		new webpack.DefinePlugin({
+			WEBPACK_MODE: JSON.stringify(argv.mode)
 		})
 	],
 	optimization: {
