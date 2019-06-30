@@ -59,8 +59,11 @@ let data = {
 	shouldShowTip: false,
 	isTipShown: false
 };
+const welcomeScreenDuration = 800;
 if( window.payload.showWelcomeScreen ){
-	setTimeout(() => { data.showWelcomeScreen = false;}, 2400);
+	setTimeout(() => {
+		data.showWelcomeScreen = false;
+	}, welcomeScreenDuration);
 }
 export default {
 	props: {
@@ -69,9 +72,13 @@ export default {
 	},
 	mounted: function(){
 		if( this.items.length > 0 || this.closedTasks > 0 || this.isTipShown ) return;
-		let delay = ( this.showWelcomeScreen ) ? 2400 : 0;
-		setTimeout(() => { data.shouldShowTip = true;}, 1600 + delay);
-		setTimeout(() => { data.shouldShowTip = false;}, 7600 + delay);
+		let delay = ( this.showWelcomeScreen ) ? welcomeScreenDuration : 0;
+		setTimeout(() => {
+			data.shouldShowTip = true;
+		}, 1600 + delay);
+		setTimeout(() => {
+			data.shouldShowTip = false;
+		}, 7600 + delay);
 		this.isTipShown = true;
 	},
 	data: function(){
