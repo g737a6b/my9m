@@ -24,7 +24,9 @@
 import draggable from "vuedraggable";
 let data = {};
 export default {
-	props: ["tasks"],
+	props: {
+		tasks: Array
+	},
 	data: function(){
 		return Object.assign(data, {items: this.tasks});
 	},

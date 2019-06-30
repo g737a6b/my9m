@@ -63,7 +63,10 @@ if( window.payload.showWelcomeScreen ){
 	setTimeout(() => { data.showWelcomeScreen = false;}, 2400);
 }
 export default {
-	props: ["tasks", "theme"],
+	props: {
+		tasks: Array,
+		theme: String
+	},
 	mounted: function(){
 		if( this.items.length > 0 || this.closedTasks > 0 || this.isTipShown ) return;
 		let delay = ( this.showWelcomeScreen ) ? 2400 : 0;

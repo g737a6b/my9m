@@ -15,7 +15,9 @@ let data = {
 	statusSuccess: ""
 };
 export default {
-	props: ["tasks"],
+	props: {
+		tasks: Array
+	},
 	data: function(){
 		return Object.assign(data, {items: this.tasks});
 	},
