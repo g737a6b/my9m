@@ -11,8 +11,9 @@
 		<p v-else-if="!closedTasks" class="empty-tasks" key="empty">登録されているタスクはありません</p>
 		<p v-else class="empty-tasks" key="all-done"><i class="fa fa-heart"></i> All Done!</p>
 		<div class="theme mt20">
-			<p class="dib">ここに今週のテーマや今日の目標を追加できます。</p>
-			<a href="#" @click.prevent="" class="dib"><i class="fa fa-edit"></i> 編集</a>
+			<p v-if="themeText.length > 0" class="dib">{{themeText}}</p>
+			<p v-else class="dib">ここに今週のテーマや今日の目標を追加できます。</p>
+			<a href="#" @click.prevent="updateTheme" class="dib"><i class="fa fa-edit"></i> 編集</a>
 		</div>
 		<div class="app-action-buttons">
 			<a href="#" @click.prevent="closeCurrentTask" class="app-action-button" :class="{'is-disabled': items.length < 1}" title="現在のタスクを完了にする"><i class="fa fa-check"></i></a>
@@ -62,7 +63,7 @@ if( window.payload.showWelcomeScreen ){
 	setTimeout(() => { data.showWelcomeScreen = false;}, 2400);
 }
 export default {
-	props: ["tasks"],
+	props: ["tasks", "theme"],
 	mounted: function(){
 		if( this.items.length > 0 || this.closedTasks > 0 || this.isTipShown ) return;
 		let delay = ( this.showWelcomeScreen ) ? 2400 : 0;
@@ -71,7 +72,10 @@ export default {
 		this.isTipShown = true;
 	},
 	data: function(){
-		return Object.assign(data, {items: this.tasks});
+		return Object.assign(data, {
+			items: this.tasks,
+			themeText: this.theme
+		});
 	},
 	methods: {
 		closeCurrentTask: function(){
@@ -79,6 +83,12 @@ export default {
 			this.items.shift();
 			this.closedTasks++;
 			this.$emit("update-storage", this.items);
+		},
+		updateTheme: function(){
+			let newTheme = window.prompt("テーマを変更", this.themeText);
+			if( typeof newTheme !== "string" ) return;
+			this.themeText = newTheme;
+			this.$emit("update-storage", this.items, newTheme);
 		}
 	}
 };

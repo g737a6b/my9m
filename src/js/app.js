@@ -17,6 +17,9 @@ if( window.localStorage ){
 	if( storageTasks ) tasks = JSON.parse(storageTasks);
 	const storageTheme = window.localStorage.getItem("theme");
 	if( storageTheme ) theme = storageTheme;
+	if( WEBPACK_MODE === "development" ){
+		console.log("Loaded my9 storage.", tasks.length, theme);
+	}
 }
 
 /**
@@ -94,10 +97,20 @@ const eventHandler = function(){
 		el: "#wrapper",
 		router,
 		methods: {
-			updateStorage: function(items){
-				tasks = items;
-				if( !window.localStorage ) return;
-				window.localStorage.setItem("tasks", JSON.stringify(items));
+			updateStorage: (newTasks, newTheme) => {
+				tasks = newTasks;
+				if( window.localStorage ){
+					window.localStorage.setItem("tasks", JSON.stringify(newTasks));
+				}
+				if( typeof newTheme === "string" ){
+					theme = newTheme;
+					if( window.localStorage ){
+						window.localStorage.setItem("theme", newTheme);
+					}
+				}
+				if( WEBPACK_MODE === "development" ){
+					console.log("Updated my9 storage.", tasks.length, theme);
+				}
 			}
 		}
 	});
