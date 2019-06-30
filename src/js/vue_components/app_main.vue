@@ -98,7 +98,7 @@ export default {
 			let newTheme = window.prompt("テーマを変更", this.themeText);
 			if( typeof newTheme !== "string" ) return;
 			this.themeText = newTheme;
-			this.$emit("update-storage", this.items, newTheme);
+			this.$emit("update-storage", this.items, this.themeText);
 		}
 	}
 };
