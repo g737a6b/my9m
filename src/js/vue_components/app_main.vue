@@ -10,7 +10,7 @@
 		<p v-if="items.length > 0" class="current-task" key="task">{{items[0].text}}</p>
 		<p v-else-if="!closedTasks" class="empty-tasks" key="empty">登録されているタスクはありません</p>
 		<p v-else class="empty-tasks" key="all-done"><i class="fa fa-heart"></i> All Done!</p>
-		<div class="theme mt20">
+		<div class="theme">
 			<p v-if="themeText.length > 0" class="dib">{{themeText}}</p>
 			<p v-else class="dib">ここに今週のテーマや今日の目標を追加できます。</p>
 			<a href="#" @click.prevent="updateTheme" class="dib"><i class="fa fa-edit"></i> 編集</a>
