@@ -69,12 +69,12 @@ const eventHandler = function(){
 				name: "add",
 				path: window.payload.homePath + "/add",
 				component: appAdd,
-				props: () => ({tasks, theme})
+				props: () => ({tasks})
 			}, {
 				name: "list",
 				path: window.payload.homePath + "/list",
 				component: appList,
-				props: () => ({tasks, theme})
+				props: () => ({tasks})
 			}, {
 				name: "about",
 				path: window.payload.homePath + "/about",
