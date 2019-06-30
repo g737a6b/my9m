@@ -226,6 +226,13 @@
 	color: $color-lighter-gray;
 }
 
+.theme{
+	font-style: italic;
+	color: $color-lighter-gray;
+	margin-bottom: 40px;
+	text-align: center;
+}
+
 .task-list{
 	line-height: 1.6;
 	border-right: 10px dotted $color-light-gray;

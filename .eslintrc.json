@@ -1,4 +1,4 @@
-module.exports = {
+{
 	"env": {
 		"browser": true,
 		"commonjs": true,
@@ -7,6 +7,9 @@ module.exports = {
 	"extends": "eslint:recommended",
 	"parserOptions": {
 		"sourceType": "module"
+	},
+	"globals": {
+		"WEBPACK_MODE": "readonly"
 	},
 	"rules": {
 		"indent": [
@@ -28,4 +31,4 @@ module.exports = {
 		],
 		"no-console": "off"
 	}
-};
+}

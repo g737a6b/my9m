@@ -11,9 +11,15 @@ import pageHelp from "src/vue_components/help.vue";
 Vue.use(VueRouter);
 
 let tasks = [];
+let theme = "";
 if( window.localStorage ){
-	const storageData = window.localStorage.getItem("tasks");
-	if( storageData ) tasks = JSON.parse(storageData);
+	const storageTasks = window.localStorage.getItem("tasks");
+	if( storageTasks ) tasks = JSON.parse(storageTasks);
+	const storageTheme = window.localStorage.getItem("theme");
+	if( storageTheme ) theme = storageTheme;
+	if( WEBPACK_MODE === "development" ){
+		console.log("Loaded my9 storage.", tasks.length, theme);
+	}
 }
 
 /**
@@ -54,21 +60,57 @@ const eventHandler = function(){
 	const router = new VueRouter({
 		mode: "hash",
 		routes: [
-			{name: "home", path: window.payload.homePath + "/", component: appMain, props: () => ({tasks})},
-			{name: "add", path: window.payload.homePath + "/add", component: appAdd, props: () => ({tasks})},
-			{name: "list", path: window.payload.homePath + "/list", component: appList, props: () => ({tasks})},
-			{name: "about", path: window.payload.homePath + "/about", component: pageAbout},
-			{name: "help", path: window.payload.homePath + "/help", component: pageHelp}
-		]
+			{
+				name: "home",
+				path: window.payload.homePath + "/",
+				component: appMain,
+				props: () => ({tasks, theme})
+			}, {
+				name: "add",
+				path: window.payload.homePath + "/add",
+				component: appAdd,
+				props: () => ({tasks})
+			}, {
+				name: "list",
+				path: window.payload.homePath + "/list",
+				component: appList,
+				props: () => ({tasks})
+			}, {
+				name: "about",
+				path: window.payload.homePath + "/about",
+				component: pageAbout
+			}, {
+				name: "help",
+				path: window.payload.homePath + "/help",
+				component: pageHelp
+			}
+		],
+		scrollBehavior: (to, from, savedPosition) => {
+			if( savedPosition ){
+				return savedPosition;
+			}else{
+				return {x: 0, y: 0};
+			}
+		}
 	});
 	new Vue({
 		el: "#wrapper",
 		router,
 		methods: {
-			updateStorage: function(items){
-				tasks = items;
-				if( !window.localStorage ) return;
-				window.localStorage.setItem("tasks", JSON.stringify(items));
+			updateStorage: (newTasks, newTheme) => {
+				tasks = newTasks;
+				if( window.localStorage ){
+					window.localStorage.setItem("tasks", JSON.stringify(newTasks));
+				}
+				if( typeof newTheme === "string" ){
+					theme = newTheme;
+					if( window.localStorage ){
+						window.localStorage.setItem("theme", newTheme);
+					}
+				}
+				if( WEBPACK_MODE === "development" ){
+					console.log("Updated my9 storage.", tasks.length, theme);
+				}
 			}
 		}
 	});
