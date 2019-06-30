@@ -81,7 +81,14 @@ const eventHandler = function(){
 				path: window.payload.homePath + "/help",
 				component: pageHelp
 			}
-		]
+		],
+		scrollBehavior: (to, from, savedPosition) => {
+			if( savedPosition ){
+				return savedPosition;
+			}else{
+				return {x: 0, y: 0};
+			}
+		}
 	});
 	new Vue({
 		el: "#wrapper",
