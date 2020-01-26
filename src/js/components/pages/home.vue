@@ -7,11 +7,11 @@
 	</transition>
 	<div v-if="!showWelcomeScreen" class="app app--home" key="app">
 		<h1 class="logo font-01">My9</h1>
-		<p v-if="items.length > 0" class="current-task" key="task">{{items[0].text}}</p>
+		<p v-if="items.length > 0" class="current-task" key="task">{{ items[0].text }}</p>
 		<p v-else-if="!closedTasks" class="empty-tasks" key="empty">登録されているタスクはありません</p>
 		<p v-else class="empty-tasks" key="all-done"><i class="fa fa-heart"></i> All Done!</p>
 		<div class="theme">
-			<p v-if="themeText.length > 0" class="dib">{{themeText}}</p>
+			<p v-if="themeText.length > 0" class="dib">{{ themeText }}</p>
 			<p v-else class="dib">ここに今週のテーマや今日の目標を追加できます。</p>
 			<a href="#" @click.prevent="updateTheme" class="dib"><i class="fa fa-edit"></i> 編集</a>
 		</div>
@@ -22,7 +22,7 @@
 			<div class="app-menu-buttons__item">
 				<router-link to="./add" class="app-menu-button" title="タスクを追加する"><i class="fa fa-plus"></i></router-link>
 				<transition name="tip-appear">
-					<p v-if="shouldShowTip" class="app-menu-buttons__item__tip">タスクを追加しよう!</p>
+					<p v-if="shouldShowTip" class="app-menu-buttons__item__tip">タスクを追加しよう！</p>
 				</transition>
 			</div>
 			<router-link to="./list" class="app-menu-buttons__item app-menu-button" title="タスクの一覧を見る"><i class="fa fa-list"></i></router-link>
@@ -53,7 +53,7 @@
 </style>
 
 <script>
-let data = {
+const data = {
 	showWelcomeScreen: window.payload.showWelcomeScreen,
 	closedTasks: 0,
 	shouldShowTip: false,
@@ -66,12 +66,27 @@ if( window.payload.showWelcomeScreen ){
 	}, welcomeScreenDuration);
 }
 export default {
-	props: {
-		tasks: Array,
-		theme: String
+	data: function(){
+		return data;
+	},
+	computed: {
+		items: {
+			get(){
+				return this.$store.state.tasks;
+			},
+			set(value){
+				this.$store.commit("updateTasks", value);
+			}
+		},
+		themeText: function(){
+			return this.$store.state.theme;
+		}
 	},
 	mounted: function(){
-		if( this.items.length > 0 || this.closedTasks > 0 || this.isTipShown ) return;
+		if( this.$store.state.tasks.length > 0
+			|| this.closedTasks > 0
+			|| this.isTipShown
+		) return;
 		let delay = ( this.showWelcomeScreen ) ? welcomeScreenDuration : 0;
 		setTimeout(() => {
 			data.shouldShowTip = true;
@@ -81,24 +96,18 @@ export default {
 		}, 7600 + delay);
 		this.isTipShown = true;
 	},
-	data: function(){
-		return Object.assign(data, {
-			items: this.tasks,
-			themeText: this.theme
-		});
-	},
 	methods: {
 		closeCurrentTask: function(){
 			if( this.items.length < 1 ) return;
-			this.items.shift();
+			const items = JSON.parse(JSON.stringify(this.items));
+			items.shift();
+			this.items = items;
 			this.closedTasks++;
-			this.$emit("update-storage", this.items);
 		},
 		updateTheme: function(){
-			let newTheme = window.prompt("テーマを変更", this.themeText);
+			const newTheme = window.prompt("テーマを変更", this.themeText);
 			if( typeof newTheme !== "string" ) return;
-			this.themeText = newTheme;
-			this.$emit("update-storage", this.items, this.themeText);
+			this.$store.commit("updateTheme", newTheme);
 		}
 	}
 };

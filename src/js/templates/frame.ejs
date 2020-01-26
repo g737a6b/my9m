@@ -1,16 +1,17 @@
 <%
-var homeUrl = process.env.NODE_ENV === "production" ? "https://my9.mofg.net" : "";
+var homeUrl = process.env.NODE_ENV === "production"
+	? "https://my9.mofg.net" : "http://localhost";
 var timestamp = Date.now();
 %>
 <!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8" />
-<meta name="description" content="My9(マイキュー)はキュー型のタスク管理ツールです。" />
+<meta name="description" content="My9（マイキュー）はキュー型のタスク管理ツールです。" />
 <link rel="canonical" href="<%= homeUrl %>" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
 <meta property="og:title" content="My9" />
-<meta property="og:description" content="My9(マイキュー)はキュー型のタスク管理ツールです。" />
+<meta property="og:description" content="My9（マイキュー）はキュー型のタスク管理ツールです。" />
 <meta property="og:url" content="<%= homeUrl %>" />
 <meta property="og:image" content="<%= homeUrl %>/img/ogp_default.png" />
 <meta property="og:site_name" content="My9" />
@@ -23,12 +24,15 @@ var timestamp = Date.now();
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Berkshire+Swash" />
 <link rel="stylesheet" href="<%= homeUrl %>/css/default.css?<%= timestamp %>" />
 <script>
-var payload = {homePath: "", showWelcomeScreen: true};
+window.payload = {
+	homePath: "",
+	showWelcomeScreen: true
+};
 </script>
 </head>
 <body>
 <div id="wrapper">
-	<router-view @update-storage="updateStorage"></router-view>
+	<router-view></router-view>
 	<footer class="footer">
 		<ul class="footer-nav">
 			<li class="footer-nav__item">
@@ -41,7 +45,7 @@ var payload = {homePath: "", showWelcomeScreen: true};
 				<a href="https://mofg.net" class="footer-nav-link" target="_blank">開発者 <i class="fa fa-external-link"></i></a>
 			</li>
 		</ul>
-		<div class="footer-copyright"><a href="https://github.com/g737a6b/my9m" class="tdu" target="_blank">View on GitHub</a> / &copy; 2019 My9</div>
+		<div class="footer-copyright"><a href="https://github.com/g737a6b/my9m" class="tdu" target="_blank">View on GitHub</a> / &copy; 2020 mofg</div>
 	</footer><!-- .footer -->
 </div><!-- #wrapper -->
 <script src="<%= homeUrl %>/js/app.js?<%= timestamp %>"></script>
