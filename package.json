@@ -24,5 +24,8 @@
 		"build-dev": "webpack --mode development && node-sass ./src/scss --output ./docs/css --output-style compressed",
 		"watch-js": "webpack --mode development --watch",
 		"watch-css": "node-sass ./src/scss --output ./docs/css --output-style compressed --watch"
+	},
+	"dependencies": {
+		"vuex": "^3.1.2"
 	}
 }
