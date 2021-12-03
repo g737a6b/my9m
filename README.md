@@ -1,4 +1,4 @@
-# my9m [![CircleCI](https://circleci.com/gh/g737a6b/my9m.svg?style=svg)](https://circleci.com/gh/g737a6b/my9m)
+# my9m
 
 ## Development
 

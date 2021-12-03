@@ -1,10 +1,6 @@
 <template>
 <main class="main">
-	<div class="logo font-01"><router-link to="./">My9</router-link></div>
-	<div class="topicpath">
-		<div class="topicpath__item"><router-link to="./" class="tdu">トップページ</router-link></div>
-		<h1 class="topicpath__item">ヘルプ</h1>
-	</div>
+	<div class="logo font-01"><router-link to="./"><i class="fa fa-angle-left color-lighter-gray fz30"></i> My9</router-link></div>
 	<h2 class="heading-01 mt30">よくある質問</h2>
 	<ul class="list-01 mt20">
 		<li class="list-01__item"><a href="#q1000" class="color-link-blue effect-tdu-on-hover">登録したデータはどこに保存されますか?</a></li>
