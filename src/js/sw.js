@@ -1,4 +1,4 @@
-const CACHE_CURRENT_VERSION = "my9m-v5";
+const CACHE_CURRENT_VERSION = "my9m-v6";
 
 self.addEventListener("install", (e) => {
 	e.waitUntil(caches.open(CACHE_CURRENT_VERSION).then((cache) => {

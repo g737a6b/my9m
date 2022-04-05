@@ -15,6 +15,7 @@
 			<p v-else class="dib">ここに今週のテーマや今日の目標を追加できます。</p>
 			<a href="#" @click.prevent="updateTheme" class="dib"><i class="fa fa-edit"></i> 編集</a>
 		</div>
+		<div style="color:red;font-weight:bold;text-align:center;">【重要】My9は2022年4月末をもって終了します。</div>
 		<div class="app-action-buttons">
 			<a href="#" @click.prevent="closeCurrentTask" class="app-action-button" :class="{'is-disabled': items.length < 1}" title="現在のタスクを完了にする"><i class="fa fa-check"></i></a>
 		</div>
